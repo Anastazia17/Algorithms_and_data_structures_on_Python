@@ -9,3 +9,16 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+def recurs(i, num, count_num, overall_sum):
+
+    if i == count_num:
+        print(f"Количество элементов: {count_num}, их сумма: {overall_sum}")
+    elif i < count_num:
+        return recurs(i + 1, num / 2 * -1, count_num, overall_sum + num)
+
+try:
+    count_num = int(input("Введите количество элементов: "))
+    recurs(0, 1, count_num, 0)
+except ValueError:
+    print("Вы вместо числа ввели строку (((. Исправьтесь!")
