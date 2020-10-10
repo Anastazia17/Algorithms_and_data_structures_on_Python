@@ -33,7 +33,7 @@ def calc():
     type_operation = input("Введите тип операции (+, -, *, /). Для выхода из программы нажмите 0 (ноль): ")
 
     if type_operation == '0':
-        print ("Выход из программы.")
+        print("Выход из программы.")
         return
 
     else:
