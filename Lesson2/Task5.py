@@ -18,3 +18,19 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+def recurs(from_sym, to_sym, out_str=''):
+
+    for i in range(from_sym, to_sym):
+        if i <= last_ascii_num:
+            out_str += f'{i} - {chr(i)} '
+    print(out_str)
+    if to_sym < last_ascii_num:
+        return recurs(from_sym + step, to_sym + step)
+
+first_ascii_num = 32
+last_ascii_num = 127
+step = 10
+
+print("Таблица ASCII от 32 до 127 символа: ")
+recurs(first_ascii_num, first_ascii_num + step)
