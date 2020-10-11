@@ -20,17 +20,17 @@ from uuid import uuid4
 import hashlib
 
 pas1 = input("Введите пароль: ")
-print ("Ваш пароль: ", pas1)
+print ("Ваш пароль:", pas1)
 salt = uuid4().hex
-print ("Соль пароля: ", salt)
+print ("Соль пароля:", salt)
 res1 = hashlib.sha256(salt.encode() + pas1.encode()).hexdigest()
-print("Хэш пароля: ", res1)
+print("Хэш пароля:", res1)
 
 pas2 = input("Введите пароль еще раз для проверки: ")
-print ("Ваш пароль: ", pas2)
-print ("Соль пароля: ", salt)
+print ("Ваш пароль:", pas2)
+print ("Соль пароля:", salt)
 res2 = hashlib.sha256(salt.encode() + pas2.encode()).hexdigest()
-print("Хэш пароля: ", res2)
+print("Хэш пароля:", res2)
 
 if (res1 == res2):
     print("Вы ввели правильный пароль.")
