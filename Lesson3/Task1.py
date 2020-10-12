@@ -13,3 +13,23 @@
 И примените ее к двум своим функциям.
 """
 
+import time
+
+start_time = time.time()
+lst = [i for i in range(10000)]
+end_time = time.time()
+res_time1 = (end_time - start_time)
+print(lst)
+print(f'Операция заняла {res_time1} секунд.')
+
+start_time = time.time()
+dict = {x: y for x in range(10000) for y in range(10000)}
+end_time = time.time()
+res_time2 = (end_time - start_time)
+print(dict)
+print(f'Операция заняла {res_time2} секунд.')
+
+
+#Вывод: у меня почему-то 10000 записей словаря заполнились за гораздо большее, чем 10000 записей списка,
+#поэтому не могу сказать в моем случае, что словари обрабатываются быстрее списков.
+#Возможно, проблема в генераторе словаря...
