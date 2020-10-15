@@ -74,7 +74,7 @@ print(timeit("""def revers(enter_num, revers_num=0):
         enter_num //= 10
         revers(enter_num, revers_num)
 """))
-# Время выполнения функции: 0.07643130000000001
+# Время выполнения функции: 0.07643130000000001 мс
 
 print(timeit("""def revers_2(enter_num, revers_num=0):
     while enter_num != 0:
@@ -83,14 +83,14 @@ print(timeit("""def revers_2(enter_num, revers_num=0):
         enter_num //= 10
     return revers_num
 """))
-# Время выполнения функции: 0.04995099999999998
+# Время выполнения функции: 0.04995099999999998 мс
 
 print(timeit("""def revers_3(enter_num):
     enter_num = str(enter_num)
     revers_num = enter_num[::-1]
     return revers_num
 """))
-# Время выполнения функции: 0.0544336
+# Время выполнения функции: 0.0544336 мс
 
 # Здесь уже более явная картина.
 # Первая функция (revers) самая медленная,
