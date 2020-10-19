@@ -7,8 +7,13 @@
 
 import collections
 
+
+print(timeit("""
 NEW_DICT = {'a': 1, 'b': 2, 'c': 3}
 print(NEW_DICT)
+"""))
 
+print(timeit("""
 NEW_DICT = collections.OrderedDict([('a', 1), ('b', 2), ('c', 3)])
 print(NEW_DICT)
+"""))
