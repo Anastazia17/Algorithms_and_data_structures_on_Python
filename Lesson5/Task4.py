@@ -35,3 +35,5 @@ print(NEW_DICT)
 #    timing = self.inner(it, self.timer)
 #  File "<timeit-src>", line 7, in inner
 # NameError: name 'collections' is not defined
+
+# Вывод от себя: по идее OrderedDict должен раотать быстрее, чем обычный словарь.
