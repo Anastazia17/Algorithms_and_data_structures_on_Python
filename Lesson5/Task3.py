@@ -11,3 +11,54 @@ deque – это обобщение стеков и очередей.
 соответствует дейстивтельности.
 """
 
+from collections import deque
+from timeit import timeit
+
+simple_lst = list("abcdefgh")
+print(simple_lst)
+simple_lst.append('i')
+simple_lst.append('j')
+simple_lst.append('k')
+print(simple_lst)
+simple_lst.pop()
+simple_lst.pop()
+simple_lst.pop()
+print(simple_lst)
+
+deq_obj = deque(simple_lst)
+print(deq_obj)
+deq_obj.append('i')
+deq_obj.append('j')
+deq_obj.append('k')
+print(deq_obj)
+deq_obj.pop()
+deq_obj.pop()
+deq_obj.pop()
+print(deq_obj)
+
+
+print(timeit("""
+simple_lst = list("abcdefgh")
+print(simple_lst)
+simple_lst.append('i')
+simple_lst.append('j')
+simple_lst.append('k')
+print(simple_lst)
+simple_lst.pop()
+simple_lst.pop()
+simple_lst.pop()
+print(simple_lst)
+"""))
+
+print(timeit("""
+deq_obj = deque(simple_lst)
+print(deq_obj)
+deq_obj.append('i')
+deq_obj.append('j')
+deq_obj.append('k')
+print(deq_obj)
+deq_obj.pop()
+deq_obj.pop()
+deq_obj.pop()
+print(deq_obj)
+"""))
