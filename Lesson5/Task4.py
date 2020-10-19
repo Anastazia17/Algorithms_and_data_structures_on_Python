@@ -5,3 +5,10 @@
 Опишите полученные результаты, сделайте выводы.
 """
 
+import collections
+
+NEW_DICT = {'a': 1, 'b': 2, 'c': 3}
+print(NEW_DICT)
+
+NEW_DICT = collections.OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+print(NEW_DICT)

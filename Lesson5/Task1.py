@@ -26,3 +26,36 @@
 Предприятия, с прибылью ниже среднего значения: Копыта
 """
 
+from collections import namedtuple
+from collections import Counter
+
+
+COMPANY1 = namedtuple('Resume', 'name profit_1_quarter profit_2_quarter profit_3_quarter profit_4_quarter')
+
+RESUME_PARTS1 = COMPANY1(
+    name='Рога',
+    profit_1_quarter='235',
+    profit_2_quarter='345634',
+    profit_3_quarter='55',
+    profit_4_quarter='235'
+)
+print(RESUME_PARTS1)
+
+
+COMPANY2 = namedtuple('Resume', 'name profit_1_quarter profit_2_quarter profit_3_quarter profit_4_quarter')
+
+RESUME_PARTS2 = COMPANY2(
+    name='Копыта',
+    profit_1_quarter='345',
+    profit_2_quarter='34',
+    profit_3_quarter='543',
+    profit_4_quarter='34'
+)
+print(RESUME_PARTS2)
+
+
+OBJ = Counter([COMPANY1])
+print(OBJ)
+
+OBJ = Counter([COMPANY2])
+print(OBJ)
