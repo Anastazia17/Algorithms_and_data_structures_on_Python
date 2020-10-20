@@ -64,7 +64,7 @@ deq_obj.pop()
 deq_obj.pop()
 print(deq_obj)
 """,setup="from collections import deque"))
-# 16.1383863 мс.
+# Время выполнения: 16.1383863 мс.
 
 
 # Вывод: deque работает быстрее, чем обычный список.
