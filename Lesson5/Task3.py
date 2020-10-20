@@ -50,9 +50,9 @@ simple_lst.pop()
 print(simple_lst)
 """))
 # Время выполнения: 18.2983061 мс.
-# Почему-то словарь выводится больше 100 раз. Не понимаю почему.
 
 print(timeit("""
+simple_lst = list("abcdefgh")
 deq_obj = deque(simple_lst)
 print(deq_obj)
 deq_obj.append('i')
@@ -63,16 +63,8 @@ deq_obj.pop()
 deq_obj.pop()
 deq_obj.pop()
 print(deq_obj)
-"""))
-# Здесь измерить время не получилось из-за ошибки:
-# File "C:/Users/Vol4itsa/PycharmProjects/Algorithms_and_data_structures_on_Python/Lesson5/Task3.py", line 53, in <module>
-#     print(timeit("""
-#   File "C:\Python38\lib\timeit.py", line 233, in timeit
-#     return Timer(stmt, setup, timer, globals).timeit(number)
-#   File "C:\Python38\lib\timeit.py", line 177, in timeit
-#     timing = self.inner(it, self.timer)
-#   File "<timeit-src>", line 7, in inner
-# NameError: name 'deque' is not defined
+""",setup="from collections import deque"))
+# 16.1383863 мс.
 
 
-# Вывод от себя: по идее Вeque должен раотать быстрее, чем обычный список.
+# Вывод: deque работает быстрее, чем обычный список.
