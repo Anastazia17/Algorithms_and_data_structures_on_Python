@@ -27,35 +27,37 @@
 """
 
 from collections import namedtuple
-from collections import Counter
 
+def calc():
+    my_var = "Company"
+    n = int(input("Введите количество предприятий: "))
+    companies = namedtuple(
+        my_var,
+        " name profit_1_quarter profit_2_quarter profit_3_quarter profit_4_quarter")
+    profit_aver = {}
 
-COMPANY1 = namedtuple('Resume', 'name profit_1_quarter profit_2_quarter profit_3_quarter profit_4_quarter')
+    for i in range(n):
+        company = companies(
+            name=input("Введите название предприятия: "),
+            profit_1_quarter=int(input("Введите прибыль за первый квартал: ")),
+            profit_2_quarter=int(input("Введите прибыль за второй квартал: ")),
+            profit_3_quarter=int(input("Введите прибыль за третий квартал: ")),
+            profit_4_quarter=int(input("Введите прибыль за четвертый квартал: ")))
 
-RESUME_PARTS1 = COMPANY1(
-    name='Рога',
-    profit_1_quarter='235',
-    profit_2_quarter='345634',
-    profit_3_quarter='55',
-    profit_4_quarter='235'
-)
-print(RESUME_PARTS1)
+        profit_aver[company.name] = (
+            company.profit_1_quarter + company.profit_2_quarter + company.profit_3_quarter + company.profit_4_quarter) / 4
 
+    total_aver = 0
+    for value in profit_aver.values():
+        total_aver += value
+    total_aver = total_aver / n
 
-COMPANY2 = namedtuple('Resume', 'name profit_1_quarter profit_2_quarter profit_3_quarter profit_4_quarter')
+    for key, value in profit_aver.items():
+        if value > total_aver:
+            print(f"{key} - прибыль выше среднего.")
+        elif value < total_aver:
+            print(f"{key} - прибыль ниже среднего.")
+        elif value == total_aver:
+            print(f"{key} - средняя прибыль.")
 
-RESUME_PARTS2 = COMPANY2(
-    name='Копыта',
-    profit_1_quarter='345',
-    profit_2_quarter='34',
-    profit_3_quarter='543',
-    profit_4_quarter='34'
-)
-print(RESUME_PARTS2)
-
-
-OBJ = Counter([COMPANY1])
-print(OBJ)
-
-OBJ = Counter([COMPANY2])
-print(OBJ)
+calc()
