@@ -12,4 +12,20 @@
 (в частности по перегрузке методов)
 """
 
-# Хочу разобрать это задание вместе с Вами и досдать его к следующему уроку.
+import collections
+import functools
+
+def calc():
+    nums = collections.defaultdict(list)
+    for i in range(2):
+        e = input(f"Введите {i+1}-е натуральное шестнадцатиричное число: ")
+        nums[f"{i+1}-{e}"] = list(e)
+    print(nums)
+
+    summ = sum([int(''.join(y), 16) for y in nums.values()])
+    print("Сумма чисел: ", list('%X' % summ))
+
+    mult = functools.reduce(lambda a, b: a * b, [int(''.join(y), 16) for y in nums.values()])
+    print("Произведение чисел: ", list('%X' % mult))
+
+calc()
