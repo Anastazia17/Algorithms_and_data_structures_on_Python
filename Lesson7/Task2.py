@@ -9,3 +9,51 @@
 Отсортированный - [8.025098788570562, 12.128870723745806, 18.45859540989644, 41.62921998361278, 46.11436617832828]
 """
 
+import random
+
+
+def merge_sort(alist):
+
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
+
+        i = 0
+        j = 0
+        k = 0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                alist[k] = lefthalf[i]
+                i = i + 1
+            else:
+                alist[k] = righthalf[j]
+                j = j + 1
+            k = k + 1
+
+        while i < len(lefthalf):
+            alist[k] = lefthalf[i]
+            i = i + 1
+            k = k + 1
+
+        while j < len(righthalf):
+            alist[k] = righthalf[j]
+            j = j + 1
+            k = k + 1
+
+
+n = int(input("Введите количество элементов: "))
+alist = [random.random()*50 for i in range(n)]
+
+print(f"Исходный список: {alist}")
+merge_sort(alist)
+print(f"Отсортированный список: {alist}")
+
+
+# Результат:
+# Введите количество элементов: 10
+# Исходный список: [35.253174985739996, 32.78645195342165, 35.74440905999896, 39.964726989219045, 18.264345235259615, 2.45495512604772, 27.318910415077053, 38.47812476141122, 33.45629914543824, 43.60576890809013]
+# Отсортированный список: [2.45495512604772, 18.264345235259615, 27.318910415077053, 32.78645195342165, 33.45629914543824, 35.253174985739996, 35.74440905999896, 38.47812476141122, 39.964726989219045, 43.60576890809013]
