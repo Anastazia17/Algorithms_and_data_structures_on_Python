@@ -11,69 +11,76 @@
 """
 
 class BinaryTree:
-    def __init__(self, root_obj):
-        # корень
-        self.root = root_obj
-        # левый потомок
-        self.left_child = None
-        # правый потомок
-        self.right_child = None
 
-    # добавить левого потомка
-    def insert_left(self, new_node):
-        # если у узла нет левого потомка
-        if self.left_child == None:
-            # тогда узел просто вставляется в дерево
-            # формируется новое поддерево
-            self.left_child = BinaryTree(new_node)
-        # если у узла есть левый потомок
+    def __init__(self, data):
+
+        self.left = None
+        self.right = None
+        self.data = data
+
+# Функция для вставки потомков:
+
+    def insert(self, data):
+
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = BinaryTree(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = BinaryTree(data)
+                else:
+                    self.right.insert(data)
         else:
-            # тогда вставляем новый узел
-            tree_obj = BinaryTree(new_node)
-            # и спускаем имеющегося потомка на один уровень ниже
-            tree_obj.left_child = self.left_child
-            self.left_child = tree_obj
+            self.data = data
 
-    # добавить правого потомка
-    def insert_right(self, new_node):
-        # если у узла нет правого потомка
-        if self.right_child == None:
-            # тогда узел просто вставляется в дерево
-            # формируется новое поддерево
-            self.right_child = BinaryTree(new_node)
-        # если у узла есть правый потомок
+# Функция для сравнения значения с узлами:
+
+    def findval(self, lkpval):
+        if lkpval < self.data:
+            if self.left is None:
+                return str(lkpval)+" не найдено!"
+            return self.left.findval(lkpval)
+        elif lkpval > self.data:
+            if self.right is None:
+                return str(lkpval)+" не найдено!"
+            return self.right.findval(lkpval)
         else:
-            # тогда вставляем новый узел
-            tree_obj = BinaryTree(new_node)
-            # и спускаем имеющегося потомка на один уровень ниже
-            tree_obj.right_child = self.right_child
-            self.right_child = tree_obj
+            print(str(self.data) + " найдено.")
 
-    # метод доступа к правому потомку
-    def get_right_child(self):
-        return self.right_child
+# Функция для вывода дерева:
 
-    # метод доступа к левому потомку
-    def get_left_child(self):
-        return self.left_child
-
-    # метод установки корня
-    def set_root_val(self, obj):
-        self.root = obj
-
-    # метод доступа к корню
-    def get_root_val(self):
-        return self.root
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.data),
+        if self.right:
+            self.right.PrintTree()
 
 
-r = BinaryTree(8)
-print(r.get_root_val())
-print(r.get_left_child())
-r.insert_left(4)
-print(r.get_left_child())
-print(r.get_left_child().get_root_val())
-r.insert_right(12)
-print(r.get_right_child())
-print(r.get_right_child().get_root_val())
-r.get_right_child().set_root_val(16)
-print(r.get_right_child().get_root_val())
+root = BinaryTree(12)
+root.insert(6)
+print(root.left.PrintTree())
+print(root.left.findval)
+root.insert(14)
+root.insert(3)
+print(root.right.PrintTree())
+print(root.right.findval)
+print(root.findval(7))
+print(root.findval(29))
+print(root.findval(14))
+
+
+# Результат:
+# 6
+# None
+# <bound method BinaryTree.findval of <__main__.BinaryTree object at 0x00000212D76462B0>>
+# 14
+# None
+# <bound method BinaryTree.findval of <__main__.BinaryTree object at 0x00000212D7646670>>
+# 7 не найдено!
+# 29 не найдено!
+# 14 найдено.
+# None

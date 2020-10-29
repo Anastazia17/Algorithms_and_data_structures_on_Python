@@ -13,3 +13,24 @@
 Но постарайтесь обойтись без них.
 """
 
+from bitarray import bitarray
+
+huffman_dict = {
+       '!': bitarray('01110'), 'B': bitarray('01111'),
+       'l': bitarray('10100'), 'q': bitarray('10110'),
+       'y': bitarray('10111')
+}
+
+a = bitarray()
+a.encode(huffman_dict, 'Bylly!')
+print(a)
+
+dec = bitarray('011111011101110').decode(huffman_dict)
+print(dec)
+print(''.join(dec))
+
+
+# Результат:
+# bitarray('011111011110100101001011101110')
+# ['B', 'y', '!']
+# By!
